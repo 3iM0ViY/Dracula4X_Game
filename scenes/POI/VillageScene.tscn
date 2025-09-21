@@ -1,0 +1,90 @@
+[gd_scene load_steps=13 format=3 uid="uid://5hq7deseilvo"]
+
+[ext_resource type="PackedScene" uid="uid://clrxoi4yqjv2y" path="res://assets/Meshes/Structures/hut.glb" id="1_0a0r6"]
+[ext_resource type="PackedScene" uid="uid://brdh662e3tx8f" path="res://assets/Meshes/Structures/hut2.0.glb" id="2_j1lqh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_chw8l"]
+albedo_color = Color(0.439049, 0.439049, 0.439049, 1)
+
+[sub_resource type="Curve" id="Curve_iro1y"]
+_data = [Vector2(0.891176, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -2.5102, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1pdq4"]
+curve = SubResource("Curve_iro1y")
+
+[sub_resource type="Gradient" id="Gradient_heas4"]
+offsets = PackedFloat32Array(0.487179, 0.647436)
+colors = PackedColorArray(0.809266, 0.335834, 3.85046e-07, 1, 0.0962047, 0.0962048, 0.0962047, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_max10"]
+gradient = SubResource("Gradient_heas4")
+
+[sub_resource type="Curve" id="Curve_0j2bh"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.602941, 1), 0.034486, 0.034486, 0, 0, Vector2(1, 0.0167437), -6.75519, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_6jm2d"]
+curve = SubResource("Curve_0j2bh")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2n8n2"]
+emission_shape = 1
+emission_sphere_radius = 0.08
+gravity = Vector3(0, 5, 0)
+damping_min = 3.0
+damping_max = 5.0
+scale_min = 0.1
+scale_max = 0.2
+scale_curve = SubResource("CurveTexture_6jm2d")
+color_ramp = SubResource("GradientTexture1D_max10")
+alpha_curve = SubResource("CurveTexture_1pdq4")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pql6"]
+transparency = 1
+specular_mode = 2
+disable_ambient_light = true
+vertex_color_use_as_albedo = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ujkuu"]
+material = SubResource("StandardMaterial3D_2pql6")
+
+[node name="VillageScene" type="Node3D"]
+
+[node name="hut4" parent="." instance=ExtResource("1_0a0r6")]
+transform = Transform3D(0.202831, 0, 0, 0, 0.202831, 0, 0, 0, 0.202831, -0.0440123, 0.0774747, -0.52412)
+
+[node name="hut5" parent="." instance=ExtResource("1_0a0r6")]
+transform = Transform3D(0.216965, 0, 0, 0, 0.222856, 0, 0, 0, 0.213956, -0.126596, 0.0774747, -0.696099)
+
+[node name="hut6" parent="." instance=ExtResource("1_0a0r6")]
+transform = Transform3D(0.137871, 0, -0.148768, 0, 0.202831, 0, 0.148768, 0, 0.137871, -0.0988676, 0.0774747, 0.737494)
+
+[node name="hut7" parent="." instance=ExtResource("1_0a0r6")]
+transform = Transform3D(0.147479, 0, -0.156927, 0, 0.222856, 0, 0.159134, 0, 0.145433, -0.0288631, 0.0774747, 0.560022)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0416322, 0.0853689, 0.0892119)
+radius = 0.15
+height = 0.2
+material = SubResource("StandardMaterial3D_chw8l")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0684385, 0)
+amount = 10
+preprocess = 1.0
+randomness = 0.3
+transform_align = 1
+process_material = SubResource("ParticleProcessMaterial_2n8n2")
+draw_pass_1 = SubResource("QuadMesh_ujkuu")
+
+[node name="hut2_0" parent="." instance=ExtResource("2_j1lqh")]
+transform = Transform3D(0.576407, -0.00232085, 0.817159, 0.00197434, 0.999997, 0.00144747, -0.81716, 0.000779014, 0.57641, -0.485907, 0.625004, -0.32129)
+
+[node name="hut2_1" parent="." instance=ExtResource("2_j1lqh")]
+transform = Transform3D(0.664172, -0.000991301, -0.221076, 0.00138204, 0.699998, 0.00101323, 0.221074, -0.00139785, 0.664172, 0.209579, 0.466212, -0.626877)
+
+[node name="hut2_2" parent="." instance=ExtResource("2_j1lqh")]
+transform = Transform3D(-0.448017, 0.000106015, 0.537849, 0.00138204, 0.699998, 0.00101323, -0.537847, 0.00171039, -0.448015, -0.425025, 0.467599, 0.474869)
+
+[node name="hut2_3" parent="." instance=ExtResource("2_j1lqh")]
+transform = Transform3D(0.0759841, 0.000857227, -0.695863, 0.00138204, 0.699998, 0.00101323, 0.695862, -0.00148385, 0.0759821, 0.615186, 0.467599, -0.0931837)

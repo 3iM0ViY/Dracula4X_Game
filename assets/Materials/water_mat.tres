@@ -1,0 +1,11 @@
+[gd_resource type="StandardMaterial3D" load_steps=0 format=3 uid="uid://4fn3m5a0rb6i"]
+
+[resource]
+transparency = 1
+albedo_color = Color(0.239216, 0.647059, 0.788235, 0.305882)
+rim = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.29
+refraction_scale = -0.37
+grow_amount = -0.305
+proximity_fade_distance = 313.08

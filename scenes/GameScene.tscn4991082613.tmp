@@ -1,0 +1,81 @@
+[gd_scene load_steps=12 format=3 uid="uid://d4drg4uhkb3ku"]
+
+[ext_resource type="Script" uid="uid://bjw6prx0uxiil" path="res://scripts/WorldGen/world_gen.gd" id="1_18ig4"]
+[ext_resource type="Script" uid="uid://b28iyxlwylpa5" path="res://scripts/camera_script.gd" id="1_xs4ih"]
+[ext_resource type="Texture2D" uid="uid://dvbkqw12i4obk" path="res://assets/Materials/SkyBG.png" id="2_6ytau"]
+[ext_resource type="Script" uid="uid://bne86up5eweyd" path="res://scripts/WorldGen/object_placer.gd" id="2_18ig4"]
+[ext_resource type="Script" uid="uid://bdy82nphtcvus" path="res://scripts/pathfinder.gd" id="3_7s5hy"]
+[ext_resource type="Script" uid="uid://0k8jgfy8cqfx" path="res://scripts/WorldGen/generation_settings.gd" id="4_6ytau"]
+[ext_resource type="Script" uid="uid://8c4mygj6ghrg" path="res://scripts/interaction.gd" id="4_xs4ih"]
+[ext_resource type="PackedScene" uid="uid://grijaagmqw4" path="res://scenes/Units/prototype_unit.tscn" id="5_vijgj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7mj4"]
+sky_top_color = Color(0.354853, 0.439867, 0.661697, 1)
+sky_horizon_color = Color(0.619962, 0.666197, 0.727935, 1)
+ground_bottom_color = Color(0.0917345, 0.191661, 0.216781, 1)
+ground_horizon_color = Color(0.619962, 0.666197, 0.727935, 1)
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("ProceduralSkyMaterial_b7mj4")
+
+[sub_resource type="Environment" id="Environment_vh257"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="GameScene" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1, 2.2)
+script = ExtResource("1_xs4ih")
+
+[node name="Scene" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Scene"]
+environment = SubResource("Environment_vh257")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene"]
+transform = Transform3D(0.368717, 0.103162, -0.9238, 0.928291, -0.0923853, 0.360193, -0.0481869, -0.990366, -0.129829, 0, 2, 0)
+light_color = Color(0.637379, 0.573521, 0.337361, 1)
+light_energy = 3.242
+light_indirect_energy = 1.204
+shadow_enabled = true
+
+[node name="TileParent" type="Node3D" parent="Scene"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6ytau")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Builder" type="Node" parent="."]
+
+[node name="WorldGenerator" type="Node" parent="Builder" node_paths=PackedStringArray("object_placer", "tile_parent", "pfinder")]
+script = ExtResource("1_18ig4")
+settings = ExtResource("4_6ytau")
+object_placer = NodePath("../ObjectPlacer")
+tile_parent = NodePath("../../Scene/TileParent")
+pfinder = NodePath("../Pathfinder")
+proto_unit = ExtResource("5_vijgj")
+
+[node name="ObjectPlacer" type="Node" parent="Builder"]
+script = ExtResource("2_18ig4")
+
+[node name="Pathfinder" type="Node" parent="Builder"]
+script = ExtResource("3_7s5hy")
+
+[node name="InteractionTracker" type="Node3D" parent="Builder" node_paths=PackedStringArray("main_camera", "p_finder")]
+script = ExtResource("4_xs4ih")
+main_camera = NodePath("../../Camera3D")
+p_finder = NodePath("../Pathfinder")

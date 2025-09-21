@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://c38sr6hbqwun5"]
+[gd_scene load_steps=8 format=3 uid="uid://c38sr6hbqwun5"]
 
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_mw60r"]
-[ext_resource type="Script" uid="uid://ddedn6b788mxl" path="res://TileParser.gd" id="1_u0uge"]
+[ext_resource type="Script" uid="uid://ddedn6b788mxl" path="res://TileParser.gd" id="1_ajik2"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="2_qgds7"]
+[ext_resource type="Script" uid="uid://k1jrlke81fkq" path="res://world_generator.gd" id="3_jkbxc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_am1nh"]
 sky_top_color = Color(0.354853, 0.439867, 0.661697, 1)
@@ -9,12 +10,12 @@ sky_horizon_color = Color(0.619962, 0.666197, 0.727935, 1)
 ground_bottom_color = Color(0.0917345, 0.191661, 0.216781, 1)
 ground_horizon_color = Color(0.619962, 0.666197, 0.727935, 1)
 
-[sub_resource type="Sky" id="Sky_ig7tw"]
+[sub_resource type="Sky" id="Sky_ajik2"]
 sky_material = SubResource("ProceduralSkyMaterial_am1nh")
 
 [sub_resource type="Environment" id="Environment_mw60r"]
 background_mode = 2
-sky = SubResource("Sky_ig7tw")
+sky = SubResource("Sky_ajik2")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -24,8 +25,8 @@ albedo_color = Color(0.980392, 0, 0.0784314, 0.145098)
 metallic_specular = 0.86
 roughness = 0.95
 
-[node name="Node3D" type="Node3D"]
-script = ExtResource("1_u0uge")
+[node name="World" type="Node3D"]
+script = ExtResource("1_ajik2")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_mw60r")
@@ -42,7 +43,7 @@ transform = Transform3D(22.9632, 0, 0, 0, -0.05, 0, 0, 0, 26.52, 9.011, 0.013438
 use_collision = true
 size = Vector3(2.1, 1, 2)
 
-[node name="ProtoController" parent="." instance=ExtResource("1_mw60r")]
+[node name="ProtoController" parent="." instance=ExtResource("2_qgds7")]
 transform = Transform3D(-0.642788, 0, -0.766044, 0, 1, 0, 0.766044, 0, -0.642788, -4.3, 0.3, -5)
 look_speed = 0.001
 base_speed = 6.0
@@ -55,3 +56,14 @@ jump_boost_force = 8.0
 transform = Transform3D(34.32, 0, 0, 0, 0.8, 0, 0, 0, 26.88, 13.3682, 0.453457, 8.60641)
 use_collision = true
 material = SubResource("StandardMaterial3D_u0uge")
+
+[node name="Builder" type="Node" parent="."]
+
+[node name="WorldGenerator" type="Node" parent="Builder"]
+script = ExtResource("3_jkbxc")
+
+[node name="ObjectPlacer" type="Node" parent="Builder"]
+
+[node name="Pathfinder" type="Node" parent="Builder"]
+
+[node name="InteractionTracker" type="Node3D" parent="Builder"]

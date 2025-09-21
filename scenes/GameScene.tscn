@@ -1,0 +1,144 @@
+[gd_scene load_steps=25 format=3 uid="uid://d4drg4uhkb3ku"]
+
+[ext_resource type="Script" uid="uid://bjw6prx0uxiil" path="res://scripts/WorldGen/world_gen.gd" id="1_18ig4"]
+[ext_resource type="Texture2D" uid="uid://dvbkqw12i4obk" path="res://assets/Materials/SkyBG.png" id="2_6ytau"]
+[ext_resource type="Script" uid="uid://bne86up5eweyd" path="res://scripts/WorldGen/object_placer.gd" id="2_18ig4"]
+[ext_resource type="Script" uid="uid://rou5s5aylh75" path="res://scripts/WorldGen/tile_mesh_data.gd" id="2_vijgj"]
+[ext_resource type="Script" uid="uid://bdy82nphtcvus" path="res://scripts/pathfinder.gd" id="3_7s5hy"]
+[ext_resource type="Resource" uid="uid://cqhpi6qmx763j" path="res://assets/Resources/Tiles/Desert.tres" id="3_pynjx"]
+[ext_resource type="Script" uid="uid://0k8jgfy8cqfx" path="res://scripts/WorldGen/generation_settings.gd" id="4_6ytau"]
+[ext_resource type="Script" uid="uid://8c4mygj6ghrg" path="res://scripts/interaction.gd" id="4_xs4ih"]
+[ext_resource type="Resource" uid="uid://dw5x60kr6vhif" path="res://assets/Resources/Tiles/Grassland.tres" id="4_yrli1"]
+[ext_resource type="Resource" uid="uid://bxiolpgcd5f2k" path="res://assets/Resources/Tiles/Ocean.tres" id="5_j40tv"]
+[ext_resource type="PackedScene" uid="uid://grijaagmqw4" path="res://scenes/Units/prototype_unit.tscn" id="5_vijgj"]
+[ext_resource type="Resource" uid="uid://dryffbpsoxrsn" path="res://assets/Resources/Tiles/Mountain.tres" id="8_qitmq"]
+[ext_resource type="Resource" uid="uid://dp4xmlsfwu7xw" path="res://assets/Resources/Tiles/Hill.tres" id="9_kxqg4"]
+[ext_resource type="PackedScene" uid="uid://xm2lgya4capr" path="res://scenes/Cursors/hexagon_cursor.tscn" id="13_e8rlm"]
+[ext_resource type="PackedScene" uid="uid://cqxjxq25t6wuy" path="res://scenes/Cursors/unit_cursor.tscn" id="14_qitmq"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="15_qitmq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b7mj4"]
+sky_top_color = Color(0.354853, 0.439867, 0.661697, 1)
+sky_horizon_color = Color(0.619962, 0.666197, 0.727935, 1)
+ground_bottom_color = Color(0.0917345, 0.191661, 0.216781, 1)
+ground_horizon_color = Color(0.619962, 0.666197, 0.727935, 1)
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("ProceduralSkyMaterial_b7mj4")
+
+[sub_resource type="Environment" id="Environment_vh257"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+ambient_light_color = Color(0.800463, 0.809527, 0.96254, 1)
+tonemap_mode = 2
+tonemap_exposure = 0.81
+tonemap_white = 2.0
+ssao_enabled = true
+ssil_enabled = true
+sdfgi_enabled = true
+glow_enabled = true
+fog_enabled = true
+fog_light_color = Color(0.830864, 0.693656, 0.822135, 1)
+fog_light_energy = 0.48
+fog_density = 0.013
+fog_sky_affect = 0.105
+fog_height = 2.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_e8rlm"]
+dof_blur_far_distance = 40.0
+dof_blur_far_transition = 45.0
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6pl24"]
+noise_type = 3
+frequency = 0.0503
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_w22tq"]
+noise_type = 3
+frequency = 0.0937
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_e8rlm"]
+noise_type = 3
+frequency = 0.0467
+
+[sub_resource type="Resource" id="Resource_w22tq"]
+script = ExtResource("4_6ytau")
+tiles = Array[ExtResource("2_vijgj")]([ExtResource("4_yrli1"), ExtResource("3_pynjx"), ExtResource("5_j40tv"), ExtResource("8_qitmq"), ExtResource("9_kxqg4")])
+biome_weights = Array[float]([1.0, 0.74, 0.9, 0.45, 0.9])
+tile_size = 1.0
+debug = false
+map_seed = 0
+map_shape = 0
+radius = 30
+biome_noise = SubResource("FastNoiseLite_6pl24")
+modify_height = true
+hill_height = 0.37
+heightmap_treshold = 0.587
+heightmap_noise = SubResource("FastNoiseLite_w22tq")
+create_water = false
+ocean_tile = ExtResource("5_j40tv")
+ocean_noise = SubResource("FastNoiseLite_e8rlm")
+ocean_height = -0.677
+ocean_treshold = 0.0
+spawn_villages = true
+map_edge_buffer = 2
+spacing = 6
+metadata/_custom_type_script = "uid://0k8jgfy8cqfx"
+
+[node name="World" type="Node3D"]
+
+[node name="Scene" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Scene"]
+environment = SubResource("Environment_vh257")
+camera_attributes = SubResource("CameraAttributesPractical_e8rlm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Scene"]
+transform = Transform3D(0.368717, 0.103162, -0.9238, 0.928291, -0.0923853, 0.360193, -0.0481869, -0.990366, -0.129829, 0, 2, 0)
+light_color = Color(0.637379, 0.573521, 0.337361, 1)
+light_energy = 3.242
+light_indirect_energy = 1.204
+shadow_enabled = true
+
+[node name="TileParent" type="Node3D" parent="Scene"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -100
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 1.0
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_6ytau")
+expand_mode = 3
+stretch_mode = 4
+
+[node name="Builder" type="Node" parent="."]
+
+[node name="WorldGenerator" type="Node" parent="Builder" node_paths=PackedStringArray("object_placer", "tile_parent", "pfinder")]
+script = ExtResource("1_18ig4")
+settings = SubResource("Resource_w22tq")
+object_placer = NodePath("../ObjectPlacer")
+tile_parent = NodePath("../../Scene/TileParent")
+pfinder = NodePath("../Pathfinder")
+proto_unit = ExtResource("5_vijgj")
+
+[node name="ObjectPlacer" type="Node" parent="Builder"]
+script = ExtResource("2_18ig4")
+
+[node name="Pathfinder" type="Node" parent="Builder"]
+script = ExtResource("3_7s5hy")
+
+[node name="InteractionTracker" type="Node3D" parent="Builder" node_paths=PackedStringArray("main_character", "p_finder")]
+script = ExtResource("4_xs4ih")
+tile_cursor_scene = ExtResource("13_e8rlm")
+unit_cursor_scene = ExtResource("14_qitmq")
+main_character = NodePath("../../ProtoController")
+p_finder = NodePath("../Pathfinder")
+
+[node name="ProtoController" parent="." instance=ExtResource("15_qitmq")]

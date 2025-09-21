@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bb3hit25an5ti"]
+
+[ext_resource type="PackedScene" uid="uid://d3um0uo16mcbf" path="res://assets/Meshes/hex_overlay.glb" id="1_1fsuc"]
+[ext_resource type="Material" uid="uid://ddnw138vd7pw0" path="res://assets/Materials/overlay_material.tres" id="2_ny1uc"]
+
+[node name="HexOverlay" instance=ExtResource("1_1fsuc")]
+transform = Transform3D(0.95, 0, 0, 0, 0.95, 0, 0, 0, 0.95, 0, 0, 0)
+
+[node name="Hex_Overlay" parent="." index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+material_override = ExtResource("2_ny1uc")

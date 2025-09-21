@@ -15,6 +15,10 @@ run/main_scene="uid://bk5h7amphd6nn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+WorldMap="*res://scripts/WorldGen/world.gd"
+
 [input]
 
 move_left={

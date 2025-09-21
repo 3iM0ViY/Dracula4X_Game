@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TileMeshData" load_steps=3 format=3 uid="uid://bxiolpgcd5f2k"]
+
+[ext_resource type="PackedScene" uid="uid://dkibj7jx3x1db" path="res://assets/Meshes/Tiles/flathexagon.glb" id="1_fssae"]
+[ext_resource type="Script" uid="uid://rou5s5aylh75" path="res://scripts/WorldGen/tile_mesh_data.gd" id="2_5di8w"]
+
+[resource]
+script = ExtResource("2_5di8w")
+mesh = ExtResource("1_fssae")
+color = Color(0.158859, 0.459023, 0.504449, 1)
+type = 3
+metadata/_custom_type_script = "uid://rou5s5aylh75"

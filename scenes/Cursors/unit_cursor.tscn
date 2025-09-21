@@ -1,0 +1,45 @@
+[gd_scene load_steps=6 format=3 uid="uid://cqxjxq25t6wuy"]
+
+[sub_resource type="Curve" id="Curve_sacgp"]
+_data = [Vector2(0.0217391, 0.956044), 0.0, 0.0233304, 0, 0, Vector2(0.992754, 0.010989), -2.30506, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_jryc2"]
+curve = SubResource("Curve_sacgp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ipejf"]
+emission_shape_scale = Vector3(0.3, 0.01, 0.3)
+emission_shape = 6
+emission_ring_axis = Vector3(0, 1, 0)
+emission_ring_height = 0.01
+emission_ring_radius = 1.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 1, 0)
+spread = 0.0
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.1
+scale_max = 0.4
+scale_curve = SubResource("CurveTexture_jryc2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6fasn"]
+shading_mode = 0
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(0.963901, 0.758574, 0.311459, 1)
+disable_receive_shadows = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_ul1iq"]
+material = SubResource("StandardMaterial3D_6fasn")
+orientation = 1
+
+[node name="UnitCursor" type="Node3D"]
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+amount = 20
+preprocess = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_ipejf")
+draw_pass_1 = SubResource("QuadMesh_ul1iq")

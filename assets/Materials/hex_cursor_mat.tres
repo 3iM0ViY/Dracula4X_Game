@@ -1,0 +1,16 @@
+[gd_resource type="StandardMaterial3D" load_steps=0 format=3 uid="uid://dmi1l2yaecsqy"]
+
+[resource]
+transparency = 1
+cull_mode = 2
+disable_ambient_light = true
+disable_fog = true
+albedo_color = Color(1, 1, 0, 0.67451)
+emission_enabled = true
+emission = Color(0.86079, 0.761297, 0.153579, 1)
+emission_energy_multiplier = 5.0
+rim_enabled = true
+rim = 0.5
+texture_filter = 0
+disable_receive_shadows = true
+proximity_fade_distance = 10.0

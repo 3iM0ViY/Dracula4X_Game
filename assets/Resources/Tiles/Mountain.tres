@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="TileMeshData" load_steps=3 format=3 uid="uid://dryffbpsoxrsn"]
+
+[ext_resource type="PackedScene" uid="uid://dg35dukc5y6q4" path="res://assets/Meshes/Tiles/Mountain.glb" id="1_mfdxn"]
+[ext_resource type="Script" uid="uid://rou5s5aylh75" path="res://scripts/WorldGen/tile_mesh_data.gd" id="1_v1qqb"]
+
+[resource]
+script = ExtResource("1_v1qqb")
+mesh = ExtResource("1_mfdxn")
+color = Color(0.708729, 0.847038, 0.903433, 1)
+type = 5
+metadata/_custom_type_script = "uid://rou5s5aylh75"

@@ -171,13 +171,13 @@ func rotate_sockets(sockets: Array, rotation: int) -> Array:
 
 
 const BIOME_WEIGHTS = {
-	"ocean": 6,
-	"forest": 3,
-	"sand": 4,
-	"rock": 3,
+	"ocean": 10,
+	"forest": 8,
+	"sand": 3,
+	"rock": 7,
 	"coast_forest": 1,
 	"coast_sand": 1,
-	"coast_rock": 1
+	"coast_rock": 3
 }
 
 func choose_weighted(options: Array) -> String:

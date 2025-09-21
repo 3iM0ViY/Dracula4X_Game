@@ -1,19 +1,20 @@
-[gd_scene load_steps=21 format=4 uid="uid://bk5h7amphd6nn"]
+[gd_scene load_steps=22 format=4 uid="uid://bk5h7amphd6nn"]
 
-[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_ig7tw"]
-[ext_resource type="PackedScene" uid="uid://en37ptdnlque" path="res://models/Free 3D Modular Game Assets For Prototyping/Sample 3/Sample 3.fbx" id="2_kek77"]
-[ext_resource type="PackedScene" uid="uid://b5gw4qxs2jp0u" path="res://models/Free 3D Modular Game Assets For Prototyping/Sample 5/Sample 5.fbx" id="3_4c57u"]
-[ext_resource type="PackedScene" uid="uid://b7s136tsd7j8m" path="res://models/Free 3D Modular Game Assets For Prototyping/Character/Character.fbx" id="4_efxa6"]
-[ext_resource type="PackedScene" uid="uid://cqt7qdg7sucqj" path="res://models/Free 3D Modular Game Assets For Prototyping/Pieces/box.fbx" id="5_dg77c"]
-[ext_resource type="PackedScene" uid="uid://c3m2pubs3qy3m" path="res://models/gltf/button_teamYellow.gltf.glb" id="6_ycdy4"]
-[ext_resource type="PackedScene" uid="uid://cn4gwhwypo1y" path="res://models/gltf/detail_forest.gltf.glb" id="7_w48qg"]
-[ext_resource type="PackedScene" uid="uid://mpy5ld7muuqo" path="res://models/gltf/slingshot_teamYellow.gltf.glb" id="8_vivmo"]
-[ext_resource type="PackedScene" uid="uid://dcsse5we6y0ge" path="res://models/gltf/tileLarge_teamYellow.gltf.glb" id="9_2cqfq"]
-[ext_resource type="PackedScene" uid="uid://cwks3lsot5pl1" path="res://models/hexes/hex_forest.gltf.glb" id="10_efxa6"]
-[ext_resource type="PackedScene" uid="uid://bidfnp0qykbno" path="res://models/hexes/hex_forest_roadA_detail.gltf.glb" id="11_dg77c"]
-[ext_resource type="PackedScene" uid="uid://j1148rxtgm8c" path="res://models/hexes/hex_forest_roadB.gltf.glb" id="12_w48qg"]
-[ext_resource type="PackedScene" uid="uid://bqtbtbf0n8c1i" path="res://models/hexes/hex_forest_waterA_detail.gltf.glb" id="13_vivmo"]
-[ext_resource type="PackedScene" uid="uid://b6w1ukih3hyfy" path="res://models/hexes/hex_rock.gltf.glb" id="14_2cqfq"]
+[ext_resource type="PackedScene" uid="uid://bs72ogkvdd7d6" path="res://addons/proto_controller/proto_controller.tscn" id="1_a8y0u"]
+[ext_resource type="PackedScene" uid="uid://en37ptdnlque" path="res://models/Free 3D Modular Game Assets For Prototyping/Sample 3/Sample 3.fbx" id="2_jkv2x"]
+[ext_resource type="PackedScene" uid="uid://b5gw4qxs2jp0u" path="res://models/Free 3D Modular Game Assets For Prototyping/Sample 5/Sample 5.fbx" id="3_jbj1t"]
+[ext_resource type="PackedScene" uid="uid://b7s136tsd7j8m" path="res://models/Free 3D Modular Game Assets For Prototyping/Character/Character.fbx" id="4_muem4"]
+[ext_resource type="PackedScene" uid="uid://cqt7qdg7sucqj" path="res://models/Free 3D Modular Game Assets For Prototyping/Pieces/box.fbx" id="5_dp3eg"]
+[ext_resource type="PackedScene" uid="uid://c3m2pubs3qy3m" path="res://models/gltf/button_teamYellow.gltf.glb" id="6_0ld40"]
+[ext_resource type="PackedScene" uid="uid://cn4gwhwypo1y" path="res://models/gltf/detail_forest.gltf.glb" id="7_gqmmt"]
+[ext_resource type="PackedScene" uid="uid://mpy5ld7muuqo" path="res://models/gltf/slingshot_teamYellow.gltf.glb" id="8_yc10j"]
+[ext_resource type="PackedScene" uid="uid://dcsse5we6y0ge" path="res://models/gltf/tileLarge_teamYellow.gltf.glb" id="9_jscy8"]
+[ext_resource type="PackedScene" uid="uid://cwks3lsot5pl1" path="res://models/hexes/hex_forest.gltf.glb" id="10_pm3ni"]
+[ext_resource type="PackedScene" uid="uid://bidfnp0qykbno" path="res://models/hexes/hex_forest_roadA_detail.gltf.glb" id="11_y6deb"]
+[ext_resource type="PackedScene" uid="uid://j1148rxtgm8c" path="res://models/hexes/hex_forest_roadB.gltf.glb" id="12_og1vs"]
+[ext_resource type="PackedScene" uid="uid://bqtbtbf0n8c1i" path="res://models/hexes/hex_forest_waterA_detail.gltf.glb" id="13_2wyq8"]
+[ext_resource type="PackedScene" uid="uid://b6w1ukih3hyfy" path="res://models/hexes/hex_rock.gltf.glb" id="14_vxglm"]
+[ext_resource type="Script" uid="uid://b28iyxlwylpa5" path="res://scripts/camera_script.gd" id="15_jkv2x"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7dm0k"]
 sky_top_color = Color(0.354853, 0.439867, 0.661697, 1)
@@ -106,7 +107,7 @@ transform = Transform3D(-1.61295e-08, 0.081, -4.31212e-06, 0, -5.90104e-11, -1.6
 operation = 2
 use_collision = true
 
-[node name="ProtoController" parent="." instance=ExtResource("1_ig7tw")]
+[node name="ProtoController" parent="." instance=ExtResource("1_a8y0u")]
 transform = Transform3D(-0.866025, 0, 0.5, 0, 1, 0, -0.5, 0, -0.866025, -0.3, 0.3, -0.3)
 look_speed = 0.001
 base_speed = 6.0
@@ -144,10 +145,10 @@ sides = 32
 transform = Transform3D(3, 0, 0, 0, 0.2, 0, 0, 0, 3, 2.1, 3.1939, 6.48155)
 sides = 6
 
-[node name="Sample 3" parent="." instance=ExtResource("2_kek77")]
+[node name="Sample 3" parent="." instance=ExtResource("2_jkv2x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6, 0, -6.7)
 
-[node name="Sample 5" parent="." instance=ExtResource("3_4c57u")]
+[node name="Sample 5" parent="." instance=ExtResource("3_jbj1t")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2, 0, -3.1)
 
 [node name="Torus" type="MeshInstance3D" parent="."]
@@ -155,38 +156,43 @@ transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 
 mesh = SubResource("ArrayMesh_yaehf")
 skeleton = NodePath("")
 
-[node name="Character" parent="." instance=ExtResource("4_efxa6")]
+[node name="Character" parent="." instance=ExtResource("4_muem4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.2, 0, -4.5)
 
-[node name="box" parent="." instance=ExtResource("5_dg77c")]
+[node name="box" parent="." instance=ExtResource("5_dp3eg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4, 0, 1.8)
 
-[node name="button_teamYellow_gltf" parent="." instance=ExtResource("6_ycdy4")]
+[node name="button_teamYellow_gltf" parent="." instance=ExtResource("6_0ld40")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7, 0, -5)
 
-[node name="detail_forest_gltf" parent="." instance=ExtResource("7_w48qg")]
+[node name="detail_forest_gltf" parent="." instance=ExtResource("7_gqmmt")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4, 0.1, -8.3)
 
-[node name="slingshot_teamYellow_gltf" parent="." instance=ExtResource("8_vivmo")]
+[node name="slingshot_teamYellow_gltf" parent="." instance=ExtResource("8_yc10j")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.8, 0.3, -8.6)
 
-[node name="tileLarge_teamYellow_gltf" parent="." instance=ExtResource("9_2cqfq")]
+[node name="tileLarge_teamYellow_gltf" parent="." instance=ExtResource("9_jscy8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.5, 0, -7.7)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.3, 0, 0)
 
-[node name="hex_forest_gltf" parent="Node3D" instance=ExtResource("10_efxa6")]
+[node name="hex_forest_gltf" parent="Node3D" instance=ExtResource("10_pm3ni")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.3, 0, 0.7)
 
-[node name="hex_forest_roadA_detail_gltf" parent="Node3D" instance=ExtResource("11_dg77c")]
+[node name="hex_forest_roadA_detail_gltf" parent="Node3D" instance=ExtResource("11_y6deb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.3, 0, 0.7)
 
-[node name="hex_forest_roadB_gltf" parent="Node3D" instance=ExtResource("12_w48qg")]
+[node name="hex_forest_roadB_gltf" parent="Node3D" instance=ExtResource("12_og1vs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.4, 0, 0.7)
 
-[node name="hex_forest_waterA_detail_gltf" parent="Node3D" instance=ExtResource("13_vivmo")]
+[node name="hex_forest_waterA_detail_gltf" parent="Node3D" instance=ExtResource("13_2wyq8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4, 0, 2.4)
 
-[node name="hex_rock_gltf" parent="Node3D" instance=ExtResource("14_2cqfq")]
+[node name="hex_rock_gltf" parent="Node3D" instance=ExtResource("14_vxglm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4, 0, 2.4)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 1.09848, 2.18264)
+visible = false
+script = ExtResource("15_jkv2x")

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://xm2lgya4capr"]
+
+[ext_resource type="PackedScene" uid="uid://covw03q3dpsa5" path="res://assets/Meshes/hexagon_cursor.glb" id="1_upos7"]
+[ext_resource type="Material" uid="uid://dmi1l2yaecsqy" path="res://assets/Materials/hex_cursor_mat.tres" id="2_x157u"]
+
+[node name="hexagon_cursor" instance=ExtResource("1_upos7")]
+
+[node name="Cylinder" parent="." index="0"]
+material_override = ExtResource("2_x157u")
